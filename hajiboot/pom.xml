@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.example</groupId>
+	<artifactId>hajiboot</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+	<packaging>jar</packaging>
+
+	<name>hajiboot</name>
+	<description>Demo project for Spring Boot</description>
+
+	<!--
+	/////////////////////////////////////////////////////////////////
+	//「Spring Boot」の設定情報を継承。ここで継承したversionがSpringBootのversionとなる。
+	//SpringBootをバージョンアップする際には、このversionタグ内の設定値を変更する。
+	-->
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.0.3.RELEASE</version>
+		<relativePath/> <!-- lookup parent from repository -->
+	</parent>
+
+	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+	<!--
+	/////////////////////////////////////////////////////////////////
+	//Java SE 8 が使われるように設定。
+	-->
+		<java.version>1.8</java.version>
+	</properties>
+
+	<dependencies>
+	<!--
+	/////////////////////////////////////////////////////////////////
+	//Webアプリケーションを作るための基本的なライブラリへの依存情報。
+	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-web</artifactId>
+		</dependency>
+
+	<!--
+	/////////////////////////////////////////////////////////////////
+	//Spring Dev Tools を使うための記述。
+	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-devtools</artifactId>
+		</dependency>
+
+	<!--
+	/////////////////////////////////////////////////////////////////
+	//ユニットテストをするための基本的なライブラリへの依存情報。
+	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+	</dependencies>
+
+	<build>
+		<plugins>
+	<!--
+	/////////////////////////////////////////////////////////////////
+	//アプリケーションを簡単に、実行・ビルドする為のMavenプラグイン。
+	-->
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainClass>com.example.hajiboot.HajibootApplication</mainClass>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+
+
+</project>
