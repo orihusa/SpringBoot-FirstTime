@@ -11,6 +11,13 @@ import org.springframework.context.annotation.ComponentScan;
 @EnableAutoConfiguration	// Spring Bootの自動設定を有効にするためのアノテーション [2.1.2]
 @ComponentScan				// 2.1.4  このクラスと同じパッケージ以下のクラスを走査する
 //@Import(AppConfig.class)	// 2.1.4  削除。Bean定義ファイルが不要となる
+
+//Spring Boot 1.2 からは
+//@EnableAutoConfiguration
+//@Configuration
+//@ComponentScan
+//の、上記３つを合成した「@SpringBootApplication」アノテーションを使用する。
+
 public class HajibootDiApplication {
 
 	public static void main(String[] args) {
@@ -22,9 +29,3 @@ public class HajibootDiApplication {
 		frontend.run();
 	}
 }
-
-// Spring Boot 1.2 からは
-// @EnableAutoConfiguration
-// @Configuration
-// @ComponentScan
-// の、上記３つを合成した「@SpringBootApplication」アノテーションを使用する。
