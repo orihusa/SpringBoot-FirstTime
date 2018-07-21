@@ -2,7 +2,9 @@
 package com.example.app;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component		// 2.1.4 DIコンテナに登録される
 public class Frontend {
 	@Autowired	// DIコンテナがインジェクションすべきフィールドであることを示す
 	ArgumentResolver argumentResolver;
