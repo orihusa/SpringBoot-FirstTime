@@ -55,6 +55,16 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+
+		<!--
+		/////////////////////////////////////////////////////////////
+		// Log4JDBC 依存関係の追加
+		-->
+		<dependency>
+			<groupId>org.lazyluke</groupId>
+			<artifactId>log4jdbc-remix</artifactId>
+			<version>0.2.7</version>
+		</dependency>
 	</dependencies>
 
 	<build>
