@@ -1,13 +1,21 @@
 package com.example.domain;
 
-import javax.persistence.*;
+//import org.springframework.data.annotation.Id;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.Table;
+//import javax.persistence.*;
+
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Entity						// JPAのエンティティであることを示す
-@Table(name = "customers")	// Entityに対応するテーブル名を指定する
+@Entity
+@Table(name="customers")	// Entityに対応するテーブル名を指定する
 @Data
 @NoArgsConstructor			// JPAの仕様でEntityクラスには引数の無いデフォルトコンストラクタが必須
 							// Lombokでデフォルトコンストラクタを生成する
@@ -17,9 +25,9 @@ public class Customer {
 	@GeneratedValue			// DBで主キーが自動採番されることを示す
 	private Integer id;
 	
-	@Column(nullable = false)
+	@Column(name = "first_name", nullable = false)
 	private String firstName;
 	
-	@Column(nullable = false)
+	@Column(name = "last_name", nullable = false)
 	private String lastName;
 }
