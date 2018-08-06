@@ -22,8 +22,11 @@ public class HajibootJpaApplication implements CommandLineRunner {
 		Customer created = customerRepository.save(new Customer(null, "Yuki", "Mori"));
 		System.out.println(created + " is created!");
 
-		// Data表示
-		customerRepository.findAll().forEach(System.out::println);
+//		// Data表示
+//		customerRepository.findAll().forEach(System.out::println);
+//
+		// DataSetを名前の昇順で取得する
+		customerRepository.findAllOrderByName().forEach(System.out::println);
 	}
 
 	public static void main(String[] args) {
