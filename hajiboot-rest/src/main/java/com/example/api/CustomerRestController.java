@@ -2,9 +2,11 @@ package com.example.api;
 
 import java.net.URI;
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -29,15 +31,19 @@ public class CustomerRestController {
 
 	// a.顧客全件取得
 	@GetMapping
-	List<Customer> getCustomers() {
-		List<Customer> customers = customerService.findAll();
+//	List<Customer> getCustomers() {
+//		List<Customer> customers = customerService.findAll();
+//		return customers;
+//	}
+	Page<Customer> getCustomers(@PageableDefault Pageable pageable) {
+		Page<Customer> customers = customerService.findAll(pageable);
 		return customers;
 	}
-	
+		
 	// b.顧客１件取得
 	@GetMapping(path = "{id}")
-	Optional<Customer> getCustomer(@PathVariable Integer id) {
-		Optional<Customer> customer = customerService.findOne(id);
+	Customer getCustomer(@PathVariable Integer id) {
+		Customer customer = customerService.findOne(id);
 		return customer;
 	}
 
