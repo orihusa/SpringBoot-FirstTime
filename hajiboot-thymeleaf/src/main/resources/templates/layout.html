@@ -14,6 +14,9 @@
 <body>
 <div class="container">
 	<h1>顧客管理システム</h1>
+	<form th:action="@{/logout}" method="post">
+		<input type="submit" class="btn btn-default btn-xs" value="ログアウト"/>
+	</form>
 	<div layout:fragment="content">
 		Fake content
 	</div>

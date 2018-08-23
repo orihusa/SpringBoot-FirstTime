@@ -41,12 +41,14 @@
 			<th>ID</th>
 			<th>姓</th>
 			<th>名</th>
+			<th>担当者</th>
 			<th colspan="2">編集</th>
 		</tr>
 		<tr th:each="customer : ${customers}">
 			<td th:text="${customer.id}">100</td>
 			<td th:text="${customer.lastName}">山田</td>
 			<td th:text="${customer.firstName}">太郎</td>
+			<td th:text="${customer.user.username}">duke</td>
 			<td>
 				<form th:action="@{/customers/edit}" method="get">
 					<input class="btn btn-default" type="submit" name="form" value="編集"/>
