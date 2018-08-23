@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.example.domain.Customer;
 import com.example.service.CustomerService;
+import com.example.service.LoginUserDetails;
 
 @Controller							// 画面遷移用のコントローラ
 @RequestMapping("customers")		// URLの接頭辞
@@ -37,17 +39,20 @@ public class CustomerController {
 	
 	// 画面の情報はCustomerFormで表現し、コントローラで変換する
 	@PostMapping(path = "create")
-	String create(@Validated	// 送信されたフォームの情報の入力チェックを行う
+	String create(
+				@Validated	// 送信されたフォームの情報の入力チェックを行う
 					CustomerForm form,
 					BindingResult result,
-					Model model			
+					Model model,
+				@AuthenticationPrincipal	// ログイン中のLoginUserDetailsオブジェクトが取得できる
+					LoginUserDetails userDetails
 				) {
 		if (result.hasErrors()) {	// 入力チェックの結果を確認し、エラーの場合は一覧画面表示に戻る
 			return list(model);
 		}
 		Customer customer = new Customer();
 		BeanUtils.copyProperties(form, customer);
-		customerService.create(customer);
+		customerService.create(customer, userDetails.getUser());
 		return "redirect:/customers";	// 正常終了時、一覧画面表示にリダイレクトする 
 	}
 
@@ -64,13 +69,20 @@ public class CustomerController {
 	String edit(@RequestParam
 					Integer id,
 					@Validated CustomerForm form,
-					BindingResult result) {
+					BindingResult result,
+					@AuthenticationPrincipal	// ログイン中のLoginUserDetailsオブジェクトが取得できる
+					LoginUserDetails userDetails
+					) {
+		if (result.hasErrors()) {
+			return editForm(id, form);
+		}
+		
 		// 送信されたCustomerFormをCustomerにコピーする
 		Customer customer = new Customer();
 		BeanUtils.copyProperties(form, customer);
 		// 更新処理を実施
 		customer.setId(id);
-		customerService.update(customer);
+		customerService.update(customer, userDetails.getUser());
 		return "redirect:/customers";	// 処理が完了したら一覧表示画面にリダイレクトする
 	}
 	
