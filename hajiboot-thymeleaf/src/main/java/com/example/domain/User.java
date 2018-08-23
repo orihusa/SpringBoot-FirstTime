@@ -29,7 +29,7 @@ public class User {
 
 	// REST APIでUserクラスをJSON出力する場合にパスワードフィールドを除外する為、@JsonIgnoreを付ける
 	@JsonIgnore
-	private String encodePassword;
+	private String encodedPassword;
 
 	@JsonIgnore
 	@OneToMany(cascade=CascadeType.ALL, fetch=FetchType.LAZY, mappedBy="user")	// UserとCustomerを１対多の関係にする

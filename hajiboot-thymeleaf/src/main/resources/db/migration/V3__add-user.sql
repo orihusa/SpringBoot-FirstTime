@@ -1,0 +1,7 @@
+CREATE TABLE users (username VARCHAR(100) NOT NULL PRIMARY KEY, encoded_password VARCHAR(255));
+
+INSERT INTO users (username, encoded_password) VALUES ('user1', 'a07424640708206da25087522a26a82e756664e7c8a1e709f5f5f74fef59f99c166d790d5cbb2bc2');
+INSERT INTO users (username, encoded_password) VALUES ('user2', 'a07424640708206da25087522a26a82e756664e7c8a1e709f5f5f74fef59f99c166d790d5cbb2bc2');
+
+ALTER TABLE customers ADD username VARCHAR(100) NOT NULL DEFAULT 'user1';
+ALTER TABLE customers ADD CONSTRAINT FK_CUSTOMERS_USERNAME FOREIGN KEY (username) REFERENCES users;

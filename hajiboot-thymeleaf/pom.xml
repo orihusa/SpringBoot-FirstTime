@@ -84,9 +84,11 @@
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
+				<configuration>
+					<mainclass>com.example.HajibootThymeleafApplication</mainclass>
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-
 
 </project>

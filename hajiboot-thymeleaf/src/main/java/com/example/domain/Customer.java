@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class Customer {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)		// DBで主キーが自動採番されることを示す
+	@GeneratedValue
 	private Integer id;
 	
 	private String firstName;
