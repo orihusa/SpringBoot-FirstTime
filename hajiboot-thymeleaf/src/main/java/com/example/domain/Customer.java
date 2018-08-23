@@ -16,9 +16,11 @@ public class Customer {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)		// DBで主キーが自動採番されることを示す
 	private Integer id;
 	
-	@Column(nullable = false)
 	private String firstName;
 	
-	@Column(nullable = false)
 	private String lastName;
+
+	@ManyToOne(fetch=FetchType.LAZY)	// UserとCustomerを多対１の関係にする
+	@JoinColumn(nullable=true, name="username")		// 外部キーのカラム名を指定する
+	private User user;
 }
